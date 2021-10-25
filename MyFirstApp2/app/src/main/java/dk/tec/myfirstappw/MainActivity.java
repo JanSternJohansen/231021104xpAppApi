@@ -16,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
         final TextView txtTryk = findViewById(R.id.txtTryk);
         Button btnTryk = findViewById(R.id.btnTryk);
 
-        btnTryk.setOnClickListener(view ->
-        {
-            txtTryk.setText("Der blev trykket på knappen");
+        btnTryk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtTryk.setText("Der blev trykket på knappen");
+            }
         });
     }
 }
