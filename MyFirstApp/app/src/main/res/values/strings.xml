@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
+    <string name="elev1">Janus</string>
+    <string name="elev2">Emil</string>
+    <string name="elev3">Victor</string>
+
 </resources>
