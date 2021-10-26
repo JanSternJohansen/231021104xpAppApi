@@ -35,7 +35,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         });
 
-        btnOK.setOnClickListener(view ->
+        OnClickListener listener = (v) -> {txtTrykOK.setText("Eventhandler i Lambda-udtryk");};
+
+        btnOK.setOnClickListener(listener);
+
+        //////////////////////////////////////////////////////////////////
+
+        btnOK.setOnClickListener((v) ->
                 {
                     txtTrykOK.setText("Eventhandler i Lambda-udtryk");
                 });
