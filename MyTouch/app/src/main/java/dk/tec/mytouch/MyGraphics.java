@@ -46,12 +46,10 @@ public class MyGraphics extends View implements View.OnTouchListener
                 {
                    // paint.setColor(Color.RED);
                    // invalidate();
-
                     moving = true;
                     xPrev = xNew;
                     yPrev = yNew;
                 }
-
                 break;
             case MotionEvent.ACTION_MOVE:
                 if(moving)
@@ -62,16 +60,10 @@ public class MyGraphics extends View implements View.OnTouchListener
                     yPrev = yNew;
                     invalidate();
                 }
-
                 break;
             case MotionEvent.ACTION_UP:
-
-
                 break;
-
         }
-
-
         return true;
     }
 }
