@@ -10,11 +10,17 @@ import android.view.View;
 public class MyGraphics extends View implements View.OnTouchListener
 {
     int xCenter = 100, yCenter = 200;
+    int xPrev, yPrev;
     int radius = 50;
+    Paint paint;
+    boolean moving = false;
 
     public MyGraphics(Context context) {
         super(context);
         this.setOnTouchListener(this);
+
+        paint = new Paint();
+        paint.setColor(Color.GREEN);
     }
 
     @Override
@@ -22,8 +28,6 @@ public class MyGraphics extends View implements View.OnTouchListener
     {
         super.onDraw(canvas);
 
-        Paint paint = new Paint();
-        paint.setColor(Color.GREEN);
         canvas.drawCircle(this.xCenter, this.yCenter, this.radius, paint);
 
     }
@@ -37,9 +41,27 @@ public class MyGraphics extends View implements View.OnTouchListener
         switch(motionEvent.getAction())
         {
             case MotionEvent.ACTION_DOWN:
+                // Er cirklen ramt med fingeren?
+                if(Math.sqrt(Math.pow(xNew - xCenter, 2) + Math.pow(yNew - yCenter, 2)) < radius)
+                {
+                   // paint.setColor(Color.RED);
+                   // invalidate();
+
+                    moving = true;
+                    xPrev = xNew;
+                    yPrev = yNew;
+                }
 
                 break;
             case MotionEvent.ACTION_MOVE:
+                if(moving)
+                {
+                    xCenter += xNew - xPrev;
+                    yCenter += yNew - yPrev;
+                    xPrev = xNew;
+                    yPrev = yNew;
+                    invalidate();
+                }
 
                 break;
             case MotionEvent.ACTION_UP:
