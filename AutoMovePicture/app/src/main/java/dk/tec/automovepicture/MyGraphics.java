@@ -12,8 +12,8 @@ public class MyGraphics extends View implements Runnable
     int x = 100, y = 200;
     int imageWidth, imageHeight;
 
-    int xDelta = 10;
-    int yDelta = 10;
+    int xDelta = 100;
+    int yDelta = 100;
 
     int screenWidth, screenHeight;
 
@@ -50,15 +50,16 @@ public class MyGraphics extends View implements Runnable
             x += xDelta;
             y += yDelta;
 
-            if(x < 0 || x + imageWidth > screenWidth)
+            if(x < 0 || x + imageWidth > screenWidth) {
                 xDelta *= -1;
+            }
             if(y < 0 || y + imageHeight > screenHeight)
                 yDelta *= -1;
 
             invalidate();
 
             try {
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
             }
         }

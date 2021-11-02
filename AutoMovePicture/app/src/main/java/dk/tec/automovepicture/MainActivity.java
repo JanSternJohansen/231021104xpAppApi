@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         //LinearLayout layout = findViewById(R.id.layout);
         FrameLayout layout = findViewById(R.id.layout);
 
+
+        MyGraphics2 mc2 = new MyGraphics2(this);
+        layout.addView(mc2);
         MyGraphics mc = new MyGraphics(this);
         layout.addView(mc);
 
