@@ -50,10 +50,15 @@ public class MyGraphics extends View implements Runnable
             x += xDelta;
             y += yDelta;
 
+            if(x < 0 || x + imageWidth > screenWidth)
+                xDelta *= -1;
+            if(y < 0 || y + imageHeight > screenHeight)
+                yDelta *= -1;
+
             invalidate();
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
             }
         }

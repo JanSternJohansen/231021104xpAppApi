@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout layout = findViewById(R.id.layout);
+        //LinearLayout layout = findViewById(R.id.layout);
+        FrameLayout layout = findViewById(R.id.layout);
+
         MyGraphics mc = new MyGraphics(this);
         layout.addView(mc);
 
@@ -53,3 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+
+//    MyGraphics2 mc2 = new MyGraphics2(this);
+//        layout.addView(mc2);
