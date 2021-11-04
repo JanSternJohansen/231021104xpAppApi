@@ -17,7 +17,12 @@ public class MainActivity extends AppCompatActivity
 
         layout = findViewById(R.id.layout);
 
-        layout.addView(new MyGraphics(this));
+        layout.addView(new MyGraphics(this),0);
+
+        Matrix matrix = new Matrix(7,15);
+        ScreenGraphics screenGraphics = new ScreenGraphics(this, matrix);
+        layout.addView(screenGraphics);
+
 
 
 
