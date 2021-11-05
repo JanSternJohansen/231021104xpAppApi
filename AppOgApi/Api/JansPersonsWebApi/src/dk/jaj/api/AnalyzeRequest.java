@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class AnalyzeRequest 
 {
-
 	MatchEnum match;
 	int id;
 	

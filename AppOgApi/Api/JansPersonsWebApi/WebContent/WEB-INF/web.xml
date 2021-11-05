@@ -12,7 +12,7 @@
    <servlet>
       <servlet-name>PersonServlet</servlet-name>
          <servlet-class>
-            dk.jaj.api.example1.PersonServlet
+            dk.jaj.api.personapi.PersonServlet
          </servlet-class>
          <load-on-startup>1</load-on-startup>
    </servlet>
