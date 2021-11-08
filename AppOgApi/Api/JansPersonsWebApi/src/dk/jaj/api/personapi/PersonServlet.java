@@ -1,9 +1,12 @@
 package dk.jaj.api.personapi;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,19 +26,15 @@ public class PersonServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-   
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		PrintWriter out = response.getWriter();
 		
-		
 		DBTool db = new DBTool();
 		//db.connect();
 		
-		
-		ObjectMapper mapper = new ObjectMapper();
-		
-		
+		ObjectMapper mapper = new ObjectMapper(); //JSON-mapper
 		
 		AnalyzeRequest analyze = new AnalyzeRequest(request.getPathInfo());
 		
@@ -61,7 +60,29 @@ public class PersonServlet extends HttpServlet
 		}
 	}
 
-	
+    
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		//super.doPost(request, response); // Giver status Method not allowed 405
+		
+		BufferedReader reader = request.getReader();
+		String jsonStr = reader.readLine();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Person p = mapper.readValue(jsonStr, Person.class);
+		
+		Logger logger = Logger.getLogger("doPost");
+		logger.log(Level.SEVERE, p.getName());
+		
+		response.setStatus(201);
+		
+		response.getWriter().print(mapper.writeValueAsString(p)); // Send det samme tilbage
+		
+		
+		
+	}
 
 }
 
